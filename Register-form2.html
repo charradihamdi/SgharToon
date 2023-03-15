@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/CSS/RegisterStyle11.css" media="all">
+</head>
+
+<body>
+
+  <div class="container" id="container">
+
+    <div class="form-container sign-up-container">
+      <form action="inscrit_submit.php" method="POST" id="enfant" enctype="multipart/form-data">
+        <p class="titre"> Espace d'enfant </p>
+        <div class="inputs">
+          <input class="input-enfant nom_enf" name="nom_enf" type="text" placeholder="Nom" />
+          <input class="input-enfant" name="prenom_enf" type="text" placeholder="Prenom" />
+          <input class="input-enfant" name="niveau-etude" type="number" placeholder="Niveau d'étude" min="1" max="6" />
+          <!-- <input class="input-enfant" name="nom_enf" type="text" placeholder="Nom de l'école"/> -->
+          <input class="input-enfant" name="pass_enf" type="password" placeholder="Mot de passe" />
+          <img src="assets/images/profile.png" id="profileDisplay" onclick="imgclick()" class="img-profile" /><input
+            type="file" name="profileimg" onchange="displayImage(this)" class="form-control" id="profileimg"
+            style="border:none;display:none" />
+        </div>
+
+        <div class="next">
+          <a class="next-link" id="next">Suivant</a>
+        </div>
+
+
+
+    </div>
+
+    <div class="form-container sign-up-container-parent" id="parent">
+      <form action="inscrit_submit.php" method="POST" id="parentform" enctype="multipart/form-data">
+        <p class="titre"> Espace parent </p>
+        <div class="inputs_parent">
+          <input class="input_parent nom_parent_id" type="text" name="nom_parent" placeholder="Nom du parent" />
+          <div class="msg-error"></div>
+          <input class="input_parent" type="text" name="prenom_parent" placeholder="Prenom du parent" />
+          <input class="input_parent" type="email" name="mail" placeholder="Adresse e-mail" />
+          <input class="input_parent" type="text" name="tlf" placeholder="Numéro du telephone du parent" />
+          <input class="input_parent" type="password" name="pass_parent" placeholder="Mot de passe du parent" />
+          <!-- <img src="assets/images/profile.png" id="profileDisplay_parent" onclick="imgclick_parent()" class="img-profile" /><input type="file" name="profileimg_parent" onchange="displayImage_parent(this)" class="form-control" id="profileimg_parent" style="border:none;display:none"/> -->
+        </div>
+        <br />
+        <button style="border-radius:20px" id="parent_btn" type="submit">Sign In</button>
+
+        <div class="next">
+          <a class="next-link" id="previous">Précedent</a>
+        </div>
+
+
+      </form>
+      </form>
+    </div>
+
+
+    <!-- login parent -->
+    <div class="form-container sign-in-container">
+
+      <form action="login_parent.php" method="GET">
+
+        <h1 class="conn">Connectez-vous à SgharToon</h1>
+        <div class="social-container">
+          <a href="#" class="social"><i style="color:#FE8533" class="fab fa-facebook-square"></i></a>
+          <a href="#" class="social"><i style="color:#FE8533" class="fab fa-twitter"></i></a>
+          <a href="#" class="social"><i style="color:#FE8533" class="fab fa-instagram"></i></a>
+        </div>
+        <span> ou bien utiliser votre compte </span>
+
+        <input type="email" name="mail_login" placeholder="Email" />
+
+        <input type="password" name="password_login" placeholder="Password" />
+        <a href="#" class="mdp_forgot">Mot de passe oublié ?</a>
+        <script type='text/javascript'>
+          alert('Email or password wrong or try to verify your mail');
+        </script>";
+
+        <button style="border-radius:20px" type="submit">Sign In</button>
+
+        <div class="next">
+          <a id="next-login-parent" class="next-link">Enfant</a>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- login enfant -->
+
+    <div class="form-container sign-in-container" id="loginParent">
+
+      <form action="login_enfant.php" method="GET">
+
+        <h1 class="conn">Connectez-vous à SgharToon</h1>
+        <div class="social-container">
+          <a href="#" class="social"><i style="color:#FE8533" class="fab fa-facebook-square"></i></a>
+          <a href="#" class="social"><i style="color:#FE8533" class="fab fa-twitter"></i></a>
+          <a href="#" class="social"><i style="color:#FE8533" class="fab fa-instagram"></i></a>
+        </div>
+        <span> ou bien utiliser votre compte </span>
+        <input type="text" name="nom_login" placeholder="Nom" />
+
+        <input type="password" name="password_login" placeholder="Password" />
+        <a href="" class="mdp_forgot">Mot de passe oublié ?</a>
+
+        <button type="submit" style="border-radius: 20px;">Sign In</button>
+        <div class="next">
+          <a id="next-login" class="next-link">Parent</a>
+        </div>
+      </form>
+    </div>
+
+
+
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <img class="logo" style="z-index:100" src="assets/images/logo.png" />
+          <h1 style="z-index:100">Bienvenu</h1>
+          <p style="z-index:100"> Vous avez déjà un compte ? Veuillez entrer votre adresse mail et votre mot de passe
+          </p>
+          <button style="z-index:100" class="ghost" id="signIn">Se Connectez</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <img class="logo2" style="z-index:100" src="assets/images/logo.png" />
+          <h1 style="z-index:100">Bienvenue</h1>
+          <p style="z-index:100">Vous n'avez pas de compte ? Veuillez entrer vos informations personnels </p>
+          <button style="z-index:100" class="ghost" id="signUp">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', function () {
+      container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', function () {
+      container.classList.remove("right-panel-active");
+    });
+
+    function imgclick() {
+      document.querySelector("#profileimg").click();
+    }
+
+    function imgclick_parent() {
+      document.querySelector("#profileimg_parent").click();
+    }
+
+
+
+
+    function displayImage(e) {
+      if (e.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          document.querySelector('#profileDisplay').setAttribute('src', e.target.result);
+          document.getElementById("profileDisplay").classList.add("addimg");
+        }
+        reader.readAsDataURL(e.files[0]);
+      }
+    }
+
+    function displayImage_parent(e) {
+      if (e.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          document.querySelector('#profileDisplay_parent').setAttribute('src', e.target.result);
+          document.getElementById("profileDisplay_parent").classList.add("addimg");
+        }
+        reader.readAsDataURL(e.files[0]);
+      }
+    }
+
+
+
+    $(document).ready(function () {
+
+      $("#parent").hide();
+      $("#next").click(function () {
+        $("#parent").show();
+        $("#parent").addClass("nexy-jquery");
+        $("#parent").removeClass("previous-jquery");
+
+      });
+
+      $("#previous").click(function () {
+
+        $("#parent").addClass("previous-jquery");
+      });
+
+      $("#next-login").click(function () {
+        $("#loginParent").addClass("loginParent");
+      });
+
+      $("#next-login-parent").click(function () {
+        $("#loginParent").removeClass("loginParent");
+      });
+
+
+
+      $("#enfant").click(function () {
+
+        return false;
+
+      });
+
+
+    });
+  </script>
+
+</body>
+
+</html>

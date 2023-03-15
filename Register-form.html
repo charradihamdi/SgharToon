@@ -1,0 +1,233 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <link rel="stylesheet" href="assets/CSS/RegisterStyle25.css" media="all">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+  <div class="container" id="container" style="border:0px solid black; width:48%;">
+    <!-- target="_blank" -->
+    <div class="form-container sign-up-container">
+      <form action="inscrit_submit_enf.php" target="_blank" method="POST" id="enfant" enctype="multipart/form-data">
+        <p class="titre"> Espace d'enfant </p>
+        <img src="assets/images/profile.png" id="profileDisplay" onclick="imgclick()" class="img-profile" /><input
+          type="file" name="profileimg" onchange="displayImage(this)" class="form-control" id="profileimg"
+          style="border:none;display:none" />
+
+        <div class="inputs">
+
+          <input class="input-enfant nom_enf" name="nom_enf" type="text" placeholder="Nom" />
+          <input class="input-enfant" name="prenom_enf" type="text" placeholder="Prenom" />
+          <input class="input-enfant" name="niveau-etude" type="number" placeholder="Niveau d'étude" min="1" max="6" />
+          <input class="input-enfant" name="age_enf" type="number" placeholder="Votre age" min=0 />
+
+        </div>
+
+        <div class="next">
+          <button type="button" class="btn btn-info btn-cont next-link" id="next">Continuer</button>
+          <button style="border-radius:20px" id="enfant_btn" type="submit">S'inscrire</button>
+        </div>
+        <div class="add_div_btn">
+          <button class="btn btn-info btn-ajout-enf"><a style="font-size: 13px;font-weight:bold;color:#FE8533"
+              href="Register-form_add_enf.php">Ajouter un enfant</a></button>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="form-container sign-up-container-parent" id="parent">
+      <form action="inscrit_submit.php" method="POST" id="parentform" enctype="multipart/form-data">
+        <p class="titre"> Espace parent </p>
+        <img src="assets/images/profile.png" id="profileDisplay_parent" onclick="imgclick_parent()"
+          class="img-profile" /><input type="file" name="profileimg_parent" onchange="displayImage_parent(this)"
+          class="form-control" id="profileimg_parent" style="border:none;display:none" />
+
+        <div class="inputs_parent">
+          <input class="input_parent nom_parent_id" type="text" name="nom_parent" placeholder="Nom du parent" />
+
+          <input class="input_parent" type="text" name="prenom_parent" placeholder="Prenom du parent" />
+          <input class="input_parent mail_par" type="email" name="mail" placeholder="Adresse e-mail" />
+          <p class="msg_email_unique"></p>
+          <input class="input_parent" type="text" name="tlf" placeholder="Numéro du telephone du parent" />
+          <input class="input_parent" type="password" name="pass_parent" placeholder="Mot de passe du parent" />
+        </div>
+        <br />
+        <button style="border-radius:20px" id="parent_btn" type="submit">S'inscrire</button>
+
+        <div class="next_arrow_div">
+          <img style="width:34px" src="assets/images/left-arrow.png" class="next-link" id="previous">
+
+
+        </div>
+
+      </form>
+    </div>
+
+
+    <!-- login parent -->
+    <div class="form-container sign-in-container">
+
+      <form id="log_parent" action="login_parent.php" method="GET">
+
+        <h1 class="conn">Connectez-vous à SgharToon</h1>
+        <div class="social-container">
+          <a href="#" class="social"><i style="color:#FE8533" class="fab fa-facebook-square"></i></a>
+          <a href="#" class="social"><i style="color:#FE8533" class="fab fa-twitter"></i></a>
+          <a href="#" class="social"><i style="color:#FE8533" class="fab fa-instagram"></i></a>
+        </div>
+        <span> ou bien utiliser votre compte </span>
+
+        <input type="email" class="email_parent" name="mail_login" placeholder="Email" />
+
+        <input type="password" class="mdp_parent" name="password_login" placeholder="Password" />
+        <a href="mdp_oubliee.php" class="mdp_forgot">Mot de passe oublié ?</a>
+
+        <button class="login_btn" style="border-radius:20px" type="submit">Se connecter</button>
+        <a href="#small-dialog"></a>
+        <div class="next">
+          <!-- <a id="next-login-parent" class="next-link">Enfant</a> -->
+        </div>
+
+      </form>
+
+
+    </div>
+
+
+    <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+      <h1 class="text-center" style="font-family:valentine">Connecter en tans que</h1>
+      <!-- <h2 class="email_ajax"> </h2>
+	      <h5 class="nom_parent_ajax"></h5>
+        <img class="img_ajax" src=""/> -->
+      <h2 class="text-center wrong"></h2>
+      <div class="content_ajax">
+
+        <div class="content_parent_ajax">
+          <form id="parent_form_ajax" style="background:transparent" action="login_parent_popup.php" method="GET">
+
+            <h2 class="nom_parent_ajax"> <?php echo $prenom_parent." ".$nom_parent ?> </h2>
+            <img class="img_parent_ajax" onclick="submit_parent_ajax()" src="profile/<?php echo $img_parent ?>" />
+
+            <input type="hidden" name="id_parent" value="<?php echo $id_parent ?>" />
+            <!-- <button type="submit" class="btn btn-login btn-info">Login</button> -->
+          </form>
+        </div>
+        <div class="line_org"></div>
+
+        <div class="content_enfants_ajax">
+          <form id="form_enf_ajax" style="background:transparent" action='login_enfant.php' method="GET">
+
+            <h2 class="nom_enf_ajax"> </h2>
+            <a href=">"><img class="img_enfant_ajax" src="profile/<?php echo $img_enfant ?> " /></a>
+
+            <!-- <input type="hidden" name='id_enf' value="<php echo $id_enf ?>" /> -->
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- login enfant -->
+
+    <!-- <div class="form-container sign-in-container" id="loginParent">
+
+		<form action="login_enfant.php" method="GET">
+
+			<h1 class="conn">Connectez-vous à SgharToon</h1>
+			<div class="social-container">
+				<a href="#" class="social"><i style="color:#FE8533" class="fab fa-facebook-square"></i></a>
+				<a href="#" class="social"><i style="color:#FE8533" class="fab fa-twitter"></i></a>
+				<a href="#" class="social"><i style="color:#FE8533" class="fab fa-instagram"></i></a>
+			</div>
+			<span> ou bien utiliser votre compte </span>
+			<input type="text" name="nom_login" placeholder="Nom"/>
+			
+			<input type="password" name="password_login" placeholder="Password"/>
+			<a href="mdp_oubliee.php" class="mdp_forgot">Mot de passe oublié ?</a>
+            
+			<button type="submit" style="border-radius: 20px;"> Sign In</button>
+            <div class="next">
+             <a id="next-login" class="next-link">Parent</a>
+            </div>
+		</form>
+  </div> -->
+
+
+
+
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <img class="logo" style="z-index:100" src="assets/images/logo.png" />
+          <h1 class="bienv_responsive" style="z-index:100;font-family:Hey Comic">Bienvenue</h1>
+          <p class="p_resp" style="z-index:100"> Vous avez déjà un compte ? Veuillez entrer votre adresse mail et votre
+            mot de passe</p>
+          <button style="z-index:100" class="ghost" id="signIn">Se Connectez</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <img class="logo2" style="z-index:100" src="assets/images/logo.png" />
+          <h1 style="z-index:100;font-family:Hey Comic">Bienvenue</h1>
+          <p style="z-index:100">Vous n'avez pas de compte ? Veuillez entrer vos informations personnels </p>
+          <button style="z-index:100" class="ghost" id="signUp">Crée un compte</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+  </script>
+  <script>
+    signUpButton.addEventListener('click', function () {
+      container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', function () {
+      container.classList.remove("right-panel-active");
+    });
+
+    function imgclick() {
+      document.querySelector("#profileimg").click();
+    }
+
+    function imgclick_parent() {
+      document.querySelector("#profileimg_parent").click();
+    }
+
+
+
+
+    function submit_with() {
+      document.getElementById("form_enf_ajax").submit();
+    }
+
+    function submit_parent_ajax() {
+      document.getElementById("parent_form_ajax").submit();
+    }
+
+
+    function displayImage(e) {
+      if (e.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          document.querySelector('#profileDisplay').setAttribute('src', e.target.result);
+          document.getElementById("profileDisplay").classList.add("addimg");
+        }
+        reader.readAsDataURL(e.files[0]);
+      }
+    }
+  </script>
+</body>
